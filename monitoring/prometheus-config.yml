@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "inventory-service"
+    static_configs:
+      - targets: ["inventory-service.prodwatch.svc.cluster.local:8000"]
+
+  - job_name: "order-service"
+    static_configs:
+      - targets: ["order-service.prodwatch.svc.cluster.local:8001"]

@@ -1,7 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI(title="Inventory Service")
+Instrumentator().instrument(app).expose(app)
 
 # In-memory databse- Just python dist for now
 

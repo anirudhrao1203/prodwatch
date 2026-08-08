@@ -2,8 +2,10 @@ import httpx
 import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI(title="Order Service")
+Instrumentator().instrument(app).expose(app)
 
 INVENTORY_SERVICE_URL = os.environ.get("INVENTORY_SERVICE_URL", "http://inventory-service:8000")
 
