@@ -19,10 +19,10 @@ jobs:
           python-version: "3.11"
 
       - name: Check Inventory Service syntax
-        run: python -m py_complie inventory-service/main.py
+        run: python3 -m py_complie inventory-service/main.py
 
       - name: Check Order Service syntax
-        run: python -m py_complie order-service/main.py
+        run: python3 -m py_complie order-service/main.py
 
       - name: Build Inventory Service image
         run: docker build -t inventory-service:ci ./inventory-service
