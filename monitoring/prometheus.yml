@@ -5,6 +5,8 @@ metadata:
   namespace: prodwatch
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: prometheus
@@ -22,6 +24,9 @@ spec:
             - name: config-volume
               mountPath: /etc/prometheus/prometheus.yml
               subPath: prometheus.yml
+            - name: config-volume
+              mountPath: /etc/prometheus/alert-rules.yml
+              subPath: alert-rules.yml
             - name: prometheus-storage
               mountPath: /prometheus
       volumes:
