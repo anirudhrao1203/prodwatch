@@ -19,10 +19,16 @@ jobs:
           python-version: "3.11"
 
       - name: Check Inventory Service syntax
-        run: python3 -m py_complie inventory-service/main.py
+        run: |
+          cd inventory-service
+          pip install -r requirements.txt
+          python -c "import main"
 
       - name: Check Order Service syntax
-        run: python3 -m py_complie order-service/main.py
+        run: |
+          cd order-service
+          pip install -r requirements.txt
+          python -c "import main"
 
       - name: Build Inventory Service image
         run: docker build -t inventory-service:ci ./inventory-service
